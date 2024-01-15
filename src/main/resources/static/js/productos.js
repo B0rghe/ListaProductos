@@ -1,19 +1,24 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
     cargarProducto();
-    $('#dataTable').DataTable();
+    $('#tablaProductos').DataTable();
 });
 
-function cargarProducto() {
+async function cargarProducto() {
   const request = await fetch('productos', {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({a: 1, b: 'Textual content'})
+    }
   });
-  const content = await request.json();
+  const productos = await request.json();
 
-  console.log(content);
+  let listaProductos = "";
+  for (producto of productos){
+    let productosHtml = '<tr><td>'+producto.id+'</td><td>'+producto.descripcion+'</td><td>'+producto.marca+'</td><td>'+producto.precio+'</td><td><a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
+    listaProductos += productosHtml;
+  }
+
+  document.querySelector('#tablaProductos tbody').outerHTML = listaProductos;
 }
