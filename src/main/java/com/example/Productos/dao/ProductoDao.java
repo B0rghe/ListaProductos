@@ -6,4 +6,6 @@ public interface ProductoDao {
     List<Producto> getProductos();
 
     void eliminar(Integer id);
+
+    void agregar(Producto producto);
 }

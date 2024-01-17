@@ -23,4 +23,9 @@ public class ProductoDaoImp implements ProductoDao{
         Producto producto = entityManager.find(Producto.class, id);
         entityManager.remove(producto);
     }
+
+    @Override
+    public void agregar(Producto producto) {
+        entityManager.merge(producto);
+    }
 }

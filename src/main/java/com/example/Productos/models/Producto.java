@@ -1,14 +1,11 @@
 package com.example.Productos.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 @Entity @Table(name = "listaproductos")
 public class Producto {
-    @Id @Getter @Setter @Column(name = "id")
+    @Id @Getter @Setter @Column(name = "id") @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @Getter @Setter @Column(name = "descripcion")
     private String descripcion;
