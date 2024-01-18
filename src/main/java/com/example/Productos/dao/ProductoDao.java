@@ -8,4 +8,8 @@ public interface ProductoDao {
     void eliminar(Integer id);
 
     void agregar(Producto producto);
+
+    void editar(Integer id, Producto producto);
+
+    Producto getProducto(Integer id);
 }

@@ -27,4 +27,16 @@ public class ControlProducto {
     public void agregarProducto(@RequestBody Producto producto){
        productoDao.agregar(producto);
     }
+
+
+
+    @RequestMapping(value = "productos/{id}", method = RequestMethod.GET)
+    public Producto getProducto(@PathVariable Integer id) {
+        Producto producto = productoDao.getProducto(id);
+        return producto;
+    }
+    @RequestMapping(value = "productos/{id}", method = RequestMethod.PUT)
+    public void guardarEdicion(@PathVariable Integer id, @RequestBody Producto producto) {
+        productoDao.editar(id, producto);
+    }
 }

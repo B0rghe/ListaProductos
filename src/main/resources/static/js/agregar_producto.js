@@ -18,4 +18,5 @@ async function agregarProducto() {
         body: JSON.stringify(datos)
     });
     alert("Producto Agregado");
+      location.reload();
 }

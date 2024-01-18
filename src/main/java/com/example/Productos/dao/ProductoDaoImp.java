@@ -28,4 +28,21 @@ public class ProductoDaoImp implements ProductoDao{
     public void agregar(Producto producto) {
         entityManager.merge(producto);
     }
+
+    @Override
+    public void editar(Integer id, Producto producto) {
+        Producto productoExistente = entityManager.find(Producto.class, id);
+
+        if (productoExistente != null) {
+            productoExistente.setDescripcion(producto.getDescripcion());
+            productoExistente.setMarca(producto.getMarca());
+            productoExistente.setPrecio(producto.getPrecio());
+
+        }
+    }
+
+    @Override
+    public Producto getProducto(Integer id) {
+        return entityManager.find(Producto.class, id);
+    }
 }
