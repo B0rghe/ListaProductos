@@ -13,19 +13,20 @@ public class ControlProducto {
     @Autowired
     private ProductoDao productoDao;
 
+
     @RequestMapping(value = "productos", method = RequestMethod.GET)
     public List<Producto> getProductos(){
         List<Producto> productos = new ArrayList<>();
         return productoDao.getProductos();
     }
     @RequestMapping(value = "productos/{id}", method = RequestMethod.DELETE)
-    public void eliminar(@PathVariable Integer id){
+    public void eliminarProducto(@PathVariable Integer id){
         productoDao.eliminar(id);
     }
 
     @RequestMapping(value = "productos", method = RequestMethod.POST)
     public void agregarProducto(@RequestBody Producto producto){
-       productoDao.agregar(producto);
+        productoDao.agregar(producto);
     }
 
 
@@ -36,7 +37,7 @@ public class ControlProducto {
         return producto;
     }
     @RequestMapping(value = "productos/{id}", method = RequestMethod.PUT)
-    public void guardarEdicion(@PathVariable Integer id, @RequestBody Producto producto) {
+    public void guardarEdicionProducto(@PathVariable Integer id, @RequestBody Producto producto) {
         productoDao.editar(id, producto);
     }
 }

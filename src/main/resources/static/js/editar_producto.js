@@ -14,16 +14,20 @@ async function editarProducto(id) {
 
     document.querySelector('#editarCodigo').value = producto.id;
     document.querySelector('#editarDescripcion').value = producto.descripcion;
+    document.querySelector('#editarCategoria').value = producto.categoria;
     document.querySelector('#editarMarca').value = producto.marca;
     document.querySelector('#editarPrecio').value = producto.precio;
+    document.querySelector('#editarImagen').value = producto.imagen;
 }
 
 async function guardarEdicion() {
     let datos = {};
     datos.id = document.getElementById('editarCodigo').value;
     datos.descripcion = document.getElementById('editarDescripcion').value;
+    datos.categoria = document.getElementById('editarCategoria').value;
     datos.marca = document.getElementById('editarMarca').value;
     datos.precio = document.getElementById('editarPrecio').value;
+    datos.imagen = document.getElementById('editarImagen').value;
 
     const id = datos.id;
 

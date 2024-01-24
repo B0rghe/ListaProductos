@@ -35,8 +35,10 @@ public class ProductoDaoImp implements ProductoDao{
 
         if (productoExistente != null) {
             productoExistente.setDescripcion(producto.getDescripcion());
+            productoExistente.setCategoria(producto.getCategoria());
             productoExistente.setMarca(producto.getMarca());
             productoExistente.setPrecio(producto.getPrecio());
+            productoExistente.setImagen(producto.getImagen());
 
         }
     }
