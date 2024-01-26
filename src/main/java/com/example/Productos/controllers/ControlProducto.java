@@ -13,7 +13,6 @@ public class ControlProducto {
     @Autowired
     private ProductoDao productoDao;
 
-
     @RequestMapping(value = "productos", method = RequestMethod.GET)
     public List<Producto> getProductos(){
         List<Producto> productos = new ArrayList<>();
@@ -23,14 +22,10 @@ public class ControlProducto {
     public void eliminarProducto(@PathVariable Integer id){
         productoDao.eliminar(id);
     }
-
     @RequestMapping(value = "productos", method = RequestMethod.POST)
     public void agregarProducto(@RequestBody Producto producto){
         productoDao.agregar(producto);
     }
-
-
-
     @RequestMapping(value = "productos/{id}", method = RequestMethod.GET)
     public Producto getProducto(@PathVariable Integer id) {
         Producto producto = productoDao.getProducto(id);

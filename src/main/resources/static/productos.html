@@ -16,7 +16,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <!-- Boton de Modal de Agregar Producto -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+            <button type="button" onclick="cargarCategoria()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">
                 Agregar Producto
             </button>
             <br><br>
@@ -62,30 +62,33 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" >Categoría</span>
-                    <input type="text" id="txtCategoria" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <select id="txtCategoria" multiple size="3" class="form-control" aria-label="Sizing example input" required>
+
+                    </select>
+                    <!--    <input type="text" id="txtCategoria" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" >Marca</span>
+                        <input type="text" id="txtMarca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Precio</span>
+                        <input type="float" id="txtPrecio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Imagen</span>
+                        <input type="text" id="txtImagen" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" >Marca</span>
-                    <input type="text" id="txtMarca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button onclick="agregarProducto()" href="#" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar producto</button>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Precio</span>
-                    <input type="float" id="txtPrecio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Imagen</span>
-                    <input type="text" id="txtImagen" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button onclick="agregarProducto()" href="#" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar producto</button>
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid">
-    <!-- Modal de Edicion -->
+    <div class="container-fluid">
+        <!-- Modal de Edicion -->
     <div class="modal fade" id="modalEdicionProductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
