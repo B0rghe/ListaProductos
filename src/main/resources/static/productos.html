@@ -8,135 +8,238 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<!-- Tabla de productos -->
-<div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">Productos</h1>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <!-- Boton de Modal de Agregar Producto -->
-            <button type="button" onclick="cargarCategoria()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-                Agregar Producto
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a onclick="verProductos()" class="navbar-brand" href="#">Gestión de productos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <br><br>
-            <h6 class="m-0 font-weight-bold text-primary">Lista de Productos</h6>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a onclick="verProductos()" class="nav-link dropdown-item" aria-current="page"  href="#">Productos</a></li>
+                    <li class="nav-item"><a onclick="verCategorias()" class="nav-link dropdown-item" aria-current="page" href="#">Categorias</a></li>
+                    <li class="nav-item"><a  class="nav-link dropdown-item" aria-current="page" href="#">Marcas</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="tablaProductos" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Descripción</th>
-                        <th>Categoría</th>
-                        <th>Marca</th>
-                        <th>Precio</th>
-                        <th>Imagen</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+    </nav>
+<!-- Tabla de productos -->
+    <div id="mostrarProductos">
+        <div class="container-fluid">
+            <h1 class="h3 mb-2 text-gray-800">Productos</h1>
 
-                    </tbody>
-                </table>
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <!-- Boton de Modal de Agregar Producto -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+                        Agregar Producto
+                    </button>
+                    <br><br>
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Productos</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tablaProductos" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                                <th>Marca</th>
+                                <th>Precio</th>
+                                <th>Imagen</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Modal de Agregar Producto -->
+        <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Agregar Producto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >Descripción</span>
+                            <input type="text" id="txtDescripcionP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >Categoría</span>
+                            <select id="txtCategoriaP" size="3" class="form-control" aria-label="Sizing example input" required>
+
+                            </select>
+                            <!--    <input type="text" id="txtCategoria" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Marca</span>
+                                <input type="text" id="txtMarcaP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Precio</span>
+                                <input type="float" id="txtPrecioP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Imagen</span>
+                                <input type="text" id="txtImagenP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button onclick="agregarProducto()" href="#" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar producto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <!-- Modal de Edicion -->
+            <div class="modal fade" id="modalEdicionProductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Edición de Producto</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="datosModalEdicionProducto">
+                            <!-- Datos del modal -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Código</span>
+                                <input type="text" id="editarCodigoP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Descripción</span>
+                                <input type="text" id="editarDescripcionP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Categoría</span>
+                                <input type="text" id="editarCategoriaP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Marca</span>
+                                <input type="text" id="editarMarcaP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Precio</span>
+                                <input type="text" id="editarPrecioP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Imagen</span>
+                                <input type="text" id="editarImagenP" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" onclick="guardarEdicionProducto()"  class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-</div>
 
-<!-- Modal de Agregar Producto -->
-<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Producto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Tabla de categorias -->
+    <!--
+        <div id="mostrarCategorias">
+        <div class="container-fluid">
+            <h1 class="h3 mb-2 text-gray-800">Categorias</h1>
+
+            // DataTales Example
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    // Boton de Modal de Agregar Categoria
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarCat">
+                        Agregar Categoria
+                    </button>
+                    <br><br>
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Categorias</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tablaCategorias" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Categoría</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" >Descripción</span>
-                    <input type="text" id="txtDescripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" >Categoría</span>
-                    <select id="txtCategoria" multiple size="3" class="form-control" aria-label="Sizing example input" required>
 
-                    </select>
-                    <!--    <input type="text" id="txtCategoria" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+        </div>
+
+        // Modal de Agregar Categoria
+        <div class="modal fade" id="modalAgregarCat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Agregar Producto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Marca</span>
-                        <input type="text" id="txtMarca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >Categoría</span>
+                            <input type="text" id="txtCategoriaC" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Precio</span>
-                        <input type="float" id="txtPrecio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Imagen</span>
-                        <input type="text" id="txtImagen" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button onclick="agregarCategoria()" href="#" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar Categoria</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button onclick="agregarProducto()" href="#" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar producto</button>
+            </div>
+        </div>
+        <div class="container-fluid">
+            // Modal de Edicion
+            <div class="modal fade" id="modalEdicionCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Edición de Categoria</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="datosModalEdicionCategoria">
+                            // Datos del modal
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Código</span>
+                                <input type="text" id="editarCodigoC" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >Categoría</span>
+                                <input type="text" id="editarCategoriaC" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" onclick="guardarEdicionCategoria()" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <!-- Modal de Edicion -->
-    <div class="modal fade" id="modalEdicionProductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edición de Producto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="datosModalEdicion">
-                    <!-- Datos del modal -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Código</span>
-                        <input type="text" id="editarCodigo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Descripción</span>
-                        <input type="text" id="editarDescripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Categoría</span>
-                        <input type="text" id="editarCategoria" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Marca</span>
-                        <input type="text" id="editarMarca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Precio</span>
-                        <input type="text" id="editarPrecio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" >Imagen</span>
-                        <input type="text" id="editarImagen" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" onclick="guardarEdicionProducto()" id="botonGuardar" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-<script src="js/productos.js"></script>
-
+    <script src="js/productos.js"></script>
+    <!-- <script src="js/categorias.js"></script> -->
 </body>
 </html>

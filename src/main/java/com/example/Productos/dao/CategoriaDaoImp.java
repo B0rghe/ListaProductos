@@ -34,7 +34,7 @@ public class CategoriaDaoImp implements CategoriaDao{
         Categoria categoriaExistente = entityManager.find(Categoria.class, id);
 
         if (categoriaExistente != null) {
-            categoriaExistente.setCategoria(categoria.getCategoria());
+            categoriaExistente.setNombrecategoria(categoria.getNombrecategoria());
 
         }
     }

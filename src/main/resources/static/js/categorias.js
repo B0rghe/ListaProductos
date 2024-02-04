@@ -1,9 +1,10 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-    cargarCategoria();
+    cargarCategorias();
 });
 
-async function cargarCategoria() {
+async function cargarCategorias() {
+
   const request = await fetch('categorias', {
     method: 'GET',
     headers: {
@@ -13,11 +14,12 @@ async function cargarCategoria() {
   });
   const categorias = await request.json();
 
+
   let listaCategorias = "";
   for (categoria of categorias){
     let btnEliminar = '<a href="#" onclick="eliminarCategoria('+categoria.id+')" class="btn btn-danger btn-circle btn-sm">Eliminar</a>';
     let btnEditar = '<a href="#" onclick="editarCategoria('+categoria.id+')" class="btn btn-info btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#modalEdicionCategoria">Editar</a>';
-    let categoriasHtml = '<tr><td>'+categoria.id+'</td><td>'+categoria.categoria+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
+    let categoriasHtml = '<tr><td>'+categoria.id+'</td><td>'+categoria.nombrecategoria+'</td><td>'+btnEditar+'</td><td>'+btnEliminar+'</td></tr>';
     listaCategorias += categoriasHtml;
   }
 
@@ -50,13 +52,13 @@ async function editarCategoria(id) {
     const datos = await response.json();
 
     document.querySelector('#editarCodigo').value = datos.id;
-    document.querySelector('#editarCategoria').value = datos.categoria;
+    document.querySelector('#editarCategoria').value = datos.nombrecategoria;
 }
 
 async function guardarEdicionCategoria() {
     let datos = {};
     datos.id = document.getElementById('editarCodigo').value;
-    datos.categoria = document.getElementById('editarCategoria').value;
+    datos.nombrecategoria = document.getElementById('editarCategoria').value;
 
     const id = datos.id;
 
@@ -73,7 +75,7 @@ async function guardarEdicionCategoria() {
 }
 async function agregarCategoria() {
     let datos = {};
-    datos.categoria = document.getElementById('txtCategoria').value;
+    datos.nombrecategoria = document.getElementById('txtCategoria').value;
 
     const request = await fetch('categorias', {
         method: 'POST',

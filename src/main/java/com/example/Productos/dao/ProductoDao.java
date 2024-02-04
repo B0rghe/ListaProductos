@@ -1,5 +1,6 @@
 package com.example.Productos.dao;
 
+import com.example.Productos.models.Categoria;
 import com.example.Productos.models.Producto;
 import java.util.List;
 public interface ProductoDao {
@@ -12,4 +13,6 @@ public interface ProductoDao {
     void editar(Integer id, Producto producto);
 
     Producto getProducto(Integer id);
+
+    List<Categoria> getCategorias();
 }

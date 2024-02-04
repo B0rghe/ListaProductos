@@ -39,4 +39,5 @@ public class ControlCategoria {
     public void guardarEdicionCategoria(@PathVariable Integer id, @RequestBody Categoria categoria) {
         categoriaDao.editar(id, categoria);
     }
+
 }

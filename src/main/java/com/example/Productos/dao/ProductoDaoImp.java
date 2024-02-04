@@ -1,5 +1,6 @@
 package com.example.Productos.dao;
 
+import com.example.Productos.models.Categoria;
 import com.example.Productos.models.Producto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -35,7 +36,7 @@ public class ProductoDaoImp implements ProductoDao{
 
         if (productoExistente != null) {
             productoExistente.setDescripcion(producto.getDescripcion());
-            productoExistente.setCategoria(producto.getCategoria());
+            productoExistente.setCategoria_id(producto.getCategoria_id());
             productoExistente.setMarca(producto.getMarca());
             productoExistente.setPrecio(producto.getPrecio());
             productoExistente.setImagen(producto.getImagen());
@@ -46,5 +47,10 @@ public class ProductoDaoImp implements ProductoDao{
     @Override
     public Producto getProducto(Integer id) {
         return entityManager.find(Producto.class, id);
+    }
+    @Override
+    public List<Categoria> getCategorias() {
+        String query = "FROM Categoria";
+        return entityManager.createQuery(query, Categoria.class).getResultList();
     }
 }
